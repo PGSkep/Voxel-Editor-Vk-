@@ -1,0 +1,6 @@
+Value: 0000000000000023	Time: 3.52236	Call: vkDestroyBuffer
+Value: 0000000000000024	Time: 3.54748	Call: vkFreeMemory
+Value: 0000000000000025	Time: 3.57068	Call: vkDestroyBuffer
+Value: 0000000000000026	Time: 3.59286	Call: vkFreeMemory
+Value: 000000000000002B	Time: 4.26698	Call: vkFreeMemory
+Value: 000000000000002A	Time: 4.29322	Call: vkDestroyImage

@@ -1,0 +1,33 @@
+#version 450
+#extension GL_ARB_separate_shader_objects : enable
+
+struct Particle
+{
+	vec4 positionSize;
+	vec4 color;
+	vec4 inertiaPadding;
+};
+
+layout(push_constant) uniform PushConstants
+{
+	float deltaTime;
+	float red;
+	float green;
+	float blue;
+} pushConstants;
+
+layout(std140, binding = 0) buffer Pos
+{
+   Particle particles[];
+};
+
+void main()
+{
+	uint index = gl_GlobalInvocationID.x;
+
+	vec3 direction = normalize(-particles[index].positionSize.xyz) * pushConstants.deltaTime / 100.0;
+	
+	particles[index].inertiaPadding.xyz += direction;
+	particles[index].positionSize.xyz += particles[index].inertiaPadding.xyz;
+	particles[index].color.xyz = particles[index].positionSize.xyz;
+}
